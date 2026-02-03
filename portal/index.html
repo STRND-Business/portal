@@ -1,15 +1,127 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STRND Business</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      padding: 40px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 80px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      font-weight: 600;
+      letter-spacing: -1px;
+    }
+
+    header p {
+      margin-top: 16px;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #bbb;
+    }
+
+    section {
+      margin-bottom: 80px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      border: 1px solid #222;
+      padding: 32px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #aaa;
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid #222;
+      padding-top: 24px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>STRND Business</h1>
-  <p>
-    Officiell portal för STRND Business.
-    För företag, butiker och privatpersoner som vill ta fram egna produkter.
-  </p>
+  <div class="container">
+
+    <header>
+      <h1>STRND Business</h1>
+      <p>
+        För företag, butiker och privatpersoner som vill ta fram egna produkter,
+        profilkläder eller samarbeten tillsammans med STRND.
+      </p>
+    </header>
+
+    <section>
+      <div class="grid">
+
+        <div class="card">
+          <h3>Företag</h3>
+          <p>
+            Profilkläder, merch och skräddarsydda lösningar för företag som vill
+            stärka sitt varumärke.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Butiker</h3>
+          <p>
+            Egna kollektioner, samarbeten och produkter anpassade för butik och
+            försäljning.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Privatpersoner</h3>
+          <p>
+            Unika plagg och produkter, även i enstaka exemplar – utan minsta
+            beställning.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      © STRND Business
+    </footer>
+
+  </div>
 </body>
 </html>
