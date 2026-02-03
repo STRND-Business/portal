@@ -14,17 +14,19 @@
 
   <h2>Skicka förfrågan</h2>
 
-<form 
-  action="https://forminit.com/f/p897cz80lcc"
-  method="POST"
-  enctype="multipart/form-data"
-  style="max-width:500px;"
->
-  <input type="hidden" name="source" value="STRND Business portal">
+  <form 
+    action="https://forminit.com/f/p897cz80lcc"
+    method="POST"
+    style="max-width:500px;"
+  >
+
+    <!-- säkerhetsfält så Forminit aldrig klagar -->
+    <input type="hidden" name="source" value="STRND Business portal">
 
     <label>
       Typ av kund<br>
-      <select name="kundtyp" style="width:100%;padding:10px;margin-bottom:20px;">
+      <select name="kundtyp" required style="width:100%;padding:10px;margin-bottom:20px;">
+        <option value="">Välj</option>
         <option value="Företag">Företag</option>
         <option value="Butik">Butik</option>
         <option value="Privatperson">Privatperson</option>
@@ -44,11 +46,6 @@
     <label>
       Meddelande<br>
       <textarea name="meddelande" rows="4" required style="width:100%;padding:10px;margin-bottom:20px;"></textarea>
-    </label>
-
-    <label>
-      Ladda upp filer (logga, skiss, inspiration)<br>
-      <input type="file" name="files" multiple style="margin-bottom:20px;">
     </label>
 
     <button type="submit" style="padding:12px 20px;background:#000;color:#fff;border:1px solid #fff;">
