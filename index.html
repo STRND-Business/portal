@@ -14,33 +14,43 @@
 
   <h2>Skicka förfrågan</h2>
 
-  <form style="max-width:500px;">
+  <form 
+    action="https://forminit.com/f/p897cz80lcc"
+    method="POST"
+    enctype="multipart/form-data"
+    style="max-width:500px;"
+  >
 
     <label>
       Typ av kund<br>
-      <select style="width:100%;padding:10px;margin-bottom:20px;">
-        <option>Företag</option>
-        <option>Butik</option>
-        <option>Privatperson</option>
+      <select name="kundtyp" style="width:100%;padding:10px;margin-bottom:20px;">
+        <option value="Företag">Företag</option>
+        <option value="Butik">Butik</option>
+        <option value="Privatperson">Privatperson</option>
       </select>
     </label>
 
     <label>
       Namn<br>
-      <input type="text" style="width:100%;padding:10px;margin-bottom:20px;">
+      <input type="text" name="namn" required style="width:100%;padding:10px;margin-bottom:20px;">
     </label>
 
     <label>
       E-post<br>
-      <input type="email" style="width:100%;padding:10px;margin-bottom:20px;">
+      <input type="email" name="email" required style="width:100%;padding:10px;margin-bottom:20px;">
     </label>
 
     <label>
       Meddelande<br>
-      <textarea rows="4" style="width:100%;padding:10px;margin-bottom:20px;"></textarea>
+      <textarea name="meddelande" rows="4" required style="width:100%;padding:10px;margin-bottom:20px;"></textarea>
     </label>
 
-    <button type="button" style="padding:12px 20px;background:#000;color:#fff;border:1px solid #fff;">
+    <label>
+      Ladda upp filer (logga, skiss, inspiration)<br>
+      <input type="file" name="files" multiple style="margin-bottom:20px;">
+    </label>
+
+    <button type="submit" style="padding:12px 20px;background:#000;color:#fff;border:1px solid #fff;">
       Skicka
     </button>
 
