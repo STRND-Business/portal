@@ -12,8 +12,8 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #4e5342; /* premium-grön */
-      color: #000;
+      background: #252621;
+      color: #fff;
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -26,34 +26,48 @@
       padding: 40px 30px;
     }
 
-    /* LOGGA */
+    /* LOGGA – BARA BILDEN */
     .logo {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     .logo img {
       max-width: 260px;
       width: 100%;
       height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* TITEL + INTRO */
+    .title {
+      text-align: center;
+      font-size: 32px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 15px;
+      max-width: 420px;
+      margin: 0 auto 45px auto;
+      line-height: 1.6;
+      color: #cfcfcf;
     }
 
     h2 {
       text-align: center;
-      margin: 10px 0;
+      margin-bottom: 20px;
       letter-spacing: 1px;
-    }
-
-    p {
-      text-align: center;
-      color: #1a1a1a;
-      margin-bottom: 40px;
     }
 
     label {
       display: block;
       font-size: 14px;
       margin-bottom: 18px;
+      color: #fff;
     }
 
     input,
@@ -62,14 +76,14 @@
       margin-top: 6px;
       padding: 14px;
       background: transparent;
-      color: #000;
-      border: 1px solid #000;
+      color: #fff;
+      border: 1px solid #fff;
       font-size: 15px;
       outline: none;
     }
 
     input::placeholder {
-      color: #333;
+      color: #aaa;
     }
 
     input:focus,
@@ -77,9 +91,9 @@
       border-width: 2px;
     }
 
-    /* === KUND TYP (STOR & MATCHANDE) === */
+    /* === KUND TYP – SVARTA MENYER === */
     .customer-type {
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .customer-options {
@@ -93,23 +107,25 @@
     }
 
     .customer-options label {
-      padding: 20px;
+      padding: 22px;
+      background: #000;
+      color: #fff;
       border: 2px solid #000;
       cursor: pointer;
       text-align: center;
       font-size: 17px;
-      font-weight: 500;
+      font-weight: 700;
+      letter-spacing: 1px;
       transition: 0.2s ease;
-      background: transparent;
     }
 
     .customer-options label:hover {
-      background: rgba(0,0,0,0.05);
+      opacity: 0.85;
     }
 
     .customer-options input:checked + label {
-      background: #000;
-      color: #4e5342;
+      outline: 2px solid #fff;
+      outline-offset: 2px;
     }
 
     /* === NAMN + BOCK === */
@@ -121,7 +137,7 @@
       position: absolute;
       right: 14px;
       top: 46px;
-      color: #000;
+      color: #fff;
       display: none;
       font-size: 18px;
     }
@@ -129,41 +145,27 @@
     /* === FIL === */
     .file-info {
       font-size: 13px;
-      color: #000;
+      color: #fff;
       margin-top: 6px;
       display: none;
     }
 
     button {
       width: 100%;
-      padding: 16px;
-      margin-top: 25px;
+      padding: 18px;
+      margin-top: 30px;
       background: #000;
-      color: #4e5342;
+      color: #fff;
       border: none;
       font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
       cursor: pointer;
-      letter-spacing: 1px;
     }
 
     button:hover {
-      opacity: 0.9;
+      opacity: 0.85;
     }
-    .title {
-  text-align: center;
-  font-size: 32px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.intro {
-  text-align: center;
-  font-size: 15px;
-  max-width: 420px;
-  margin: 0 auto 45px auto;
-  line-height: 1.6;
-  color: #1a1a1a;
-}
   </style>
 </head>
 
@@ -174,13 +176,14 @@
     <div class="logo">
       <img src="assets/logga.png" alt="STRND Business">
     </div>
-<h1 class="title">STRND <span style="font-weight:300;">Business</span></h1>
-<p class="intro">
-  Välkommen till portalen. Här kan företag, butiker och privatpersoner
-  skicka förfrågningar, idéer och underlag för skräddarsydda produkter.
-</p>
 
+    <h1 class="title">STRND <span style="font-weight:300;">Business</span></h1>
 
+    <p class="intro">
+      Välkommen till portalen. Här kan privatpersoner, företag, butiker,
+      föreningar och creators skicka förfrågningar, idéer och underlag
+      för skräddarsydda produkter.
+    </p>
 
     <h2>Skicka förfrågan</h2>
 
@@ -192,17 +195,24 @@
       <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
       <input type="hidden" name="_captcha" value="false">
 
+      <!-- TYP AV KUND -->
       <div class="customer-type">
         <label>Typ av kund</label>
         <div class="customer-options">
-          <input type="radio" id="foretag" name="kundtyp" value="Företag" required>
-          <label for="foretag">Företag</label>
+          <input type="radio" id="privat" name="kundtyp" value="Privatperson" required>
+          <label for="privat">PRIVATPERSON</label>
+
+          <input type="radio" id="foretag" name="kundtyp" value="Företag">
+          <label for="foretag">FÖRETAG</label>
 
           <input type="radio" id="butik" name="kundtyp" value="Butik">
-          <label for="butik">Butik</label>
+          <label for="butik">BUTIK</label>
 
-          <input type="radio" id="privat" name="kundtyp" value="Privatperson">
-          <label for="privat">Privatperson</label>
+          <input type="radio" id="forening" name="kundtyp" value="Förening">
+          <label for="forening">FÖRENING</label>
+
+          <input type="radio" id="creator" name="kundtyp" value="Creator">
+          <label for="creator">CREATOR</label>
         </div>
       </div>
 
