@@ -5,6 +5,10 @@
   <title>STRND Business</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -18,13 +22,13 @@
 
     .container {
       width: 100%;
-      max-width: 540px;
+      max-width: 560px;
       padding: 40px;
     }
 
+    /* LOGGA */
     .logo {
-      display: flex;
-      justify-content: center;
+      text-align: center;
       margin-bottom: 30px;
     }
 
@@ -34,93 +38,102 @@
       height: auto;
     }
 
-    h2, p {
+    h2 {
       text-align: center;
+      margin-bottom: 10px;
     }
 
     p {
-      color: #bbb;
+      text-align: center;
+      color: #aaa;
       margin-bottom: 40px;
     }
 
     label {
       display: block;
-      margin-bottom: 22px;
       font-size: 14px;
+      margin-bottom: 18px;
     }
 
     input, textarea {
       width: 100%;
-      padding: 12px;
       margin-top: 6px;
+      padding: 14px;
       background: #000;
       color: #fff;
       border: 1px solid #333;
+      font-size: 15px;
       outline: none;
-      font-size: 14px;
     }
 
     input:focus, textarea:focus {
       border-color: #fff;
     }
 
-    /* === STOR & SNYGG TYP AV KUND === */
+    /* === KUND TYP === */
     .customer-type {
       margin-bottom: 30px;
     }
 
-    .customer-type label {
-      font-size: 15px;
-      margin-bottom: 10px;
+    .customer-options {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
     }
 
-    .customer-type select {
-      width: 100%;
-      padding: 16px;
-      font-size: 16px;
-      background: #000;
-      color: #fff;
-      border: 2px solid #fff;
+    .customer-options input {
+      display: none;
+    }
+
+    .customer-options label {
+      padding: 18px;
+      border: 2px solid #333;
       cursor: pointer;
-      appearance: none;
+      text-align: center;
+      font-size: 16px;
+      transition: 0.2s ease;
     }
 
-    .customer-type select:focus {
-      outline: none;
+    .customer-options label:hover {
+      border-color: #fff;
+    }
+
+    .customer-options input:checked + label {
+      border-color: #00ff88;
       background: #111;
     }
 
     /* === NAMN + BOCK === */
-    .name-wrapper {
+    .name-wrap {
       position: relative;
     }
 
     .checkmark {
       position: absolute;
-      right: 12px;
-      top: 42px;
+      right: 14px;
+      top: 44px;
       color: #00ff88;
       display: none;
       font-size: 18px;
     }
 
-    /* === FILVISNING === */
+    /* === FIL === */
     .file-info {
-      margin-top: 6px;
       font-size: 13px;
       color: #00ff88;
+      margin-top: 6px;
       display: none;
     }
 
     button {
       width: 100%;
-      padding: 15px;
-      margin-top: 15px;
+      padding: 16px;
+      margin-top: 20px;
       background: #000;
       color: #fff;
       border: 1px solid #fff;
+      font-size: 16px;
       cursor: pointer;
-      font-size: 15px;
     }
 
     button:hover {
@@ -135,7 +148,7 @@
 
     <!-- LOGGA -->
     <div class="logo">
-<img src="assets/logga.png" alt="STRND Business">
+      <img src="assets/logga.png" alt="STRND Business">
     </div>
 
     <p>För företag, butiker och privatpersoner.</p>
@@ -148,42 +161,51 @@
       enctype="multipart/form-data"
     >
 
-      <!-- FormSubmit-inställningar -->
+      <!-- FormSubmit -->
       <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
       <input type="hidden" name="_captcha" value="false">
 
       <!-- TYP AV KUND -->
       <div class="customer-type">
         <label>Typ av kund</label>
-        <select name="kundtyp" required>
-          <option value="">Välj</option>
-          <option value="Företag">Företag</option>
-          <option value="Butik">Butik</option>
-          <option value="Privatperson">Privatperson</option>
-        </select>
+        <div class="customer-options">
+          <input type="radio" id="foretag" name="kundtyp" value="Företag" required>
+          <label for="foretag">Företag</label>
+
+          <input type="radio" id="butik" name="kundtyp" value="Butik">
+          <label for="butik">Butik</label>
+
+          <input type="radio" id="privat" name="kundtyp" value="Privatperson">
+          <label for="privat">Privatperson</label>
+        </div>
       </div>
 
-      <label class="name-wrapper">
+      <!-- NAMN -->
+      <label class="name-wrap">
         Namn
         <input type="text" id="nameInput" name="namn" required>
         <span class="checkmark" id="nameCheck">✔</span>
       </label>
 
+      <!-- TELEFON -->
       <label>
         Telefon
         <input type="tel" name="telefon" placeholder="+46 70 123 45 67">
       </label>
 
+      <!-- EMAIL -->
       <label>
         E-post
         <input type="email" name="email" required>
       </label>
 
+      <!-- MEDDELANDE -->
       <label>
         Meddelande
         <textarea name="meddelande" rows="4" required></textarea>
       </label>
 
+      <!-- FIL -->
       <label>
         Ladda upp fil (logga, skiss, inspiration)
         <input type="file" id="fileInput" name="attachment">
@@ -203,7 +225,8 @@
     const fileInfo = document.getElementById("fileInfo");
 
     nameInput.addEventListener("input", () => {
-      nameCheck.style.display = nameInput.value.trim().length > 1 ? "block" : "none";
+      nameCheck.style.display =
+        nameInput.value.trim().length > 1 ? "block" : "none";
     });
 
     fileInput.addEventListener("change", () => {
