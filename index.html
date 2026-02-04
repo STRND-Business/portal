@@ -18,7 +18,7 @@
 
     .container {
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       padding: 40px;
     }
 
@@ -45,11 +45,11 @@
 
     label {
       display: block;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       font-size: 14px;
     }
 
-    input, select, textarea {
+    input, textarea {
       width: 100%;
       padding: 12px;
       margin-top: 6px;
@@ -57,12 +57,40 @@
       color: #fff;
       border: 1px solid #333;
       outline: none;
+      font-size: 14px;
     }
 
-    input:focus, textarea:focus, select:focus {
+    input:focus, textarea:focus {
       border-color: #fff;
     }
 
+    /* === STOR & SNYGG TYP AV KUND === */
+    .customer-type {
+      margin-bottom: 30px;
+    }
+
+    .customer-type label {
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    .customer-type select {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      background: #000;
+      color: #fff;
+      border: 2px solid #fff;
+      cursor: pointer;
+      appearance: none;
+    }
+
+    .customer-type select:focus {
+      outline: none;
+      background: #111;
+    }
+
+    /* === NAMN + BOCK === */
     .name-wrapper {
       position: relative;
     }
@@ -76,10 +104,18 @@
       font-size: 18px;
     }
 
+    /* === FILVISNING === */
+    .file-info {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #00ff88;
+      display: none;
+    }
+
     button {
       width: 100%;
-      padding: 14px;
-      margin-top: 10px;
+      padding: 15px;
+      margin-top: 15px;
       background: #000;
       color: #fff;
       border: 1px solid #fff;
@@ -99,7 +135,7 @@
 
     <!-- LOGGA -->
     <div class="logo">
-      <img src="assets/logga.png" alt="STRND Business">
+      <img src="assets/854c2d69350134772c9b2a774a80a23a1136755fa0820665a74c0bc1c0fd107d.png" alt="STRND Business">
     </div>
 
     <p>För företag, butiker och privatpersoner.</p>
@@ -116,20 +152,26 @@
       <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
       <input type="hidden" name="_captcha" value="false">
 
-      <label>
-        Typ av kund
+      <!-- TYP AV KUND -->
+      <div class="customer-type">
+        <label>Typ av kund</label>
         <select name="kundtyp" required>
           <option value="">Välj</option>
           <option value="Företag">Företag</option>
           <option value="Butik">Butik</option>
           <option value="Privatperson">Privatperson</option>
         </select>
-      </label>
+      </div>
 
       <label class="name-wrapper">
         Namn
         <input type="text" id="nameInput" name="namn" required>
         <span class="checkmark" id="nameCheck">✔</span>
+      </label>
+
+      <label>
+        Telefon
+        <input type="tel" name="telefon" placeholder="+46 70 123 45 67">
       </label>
 
       <label>
@@ -144,7 +186,8 @@
 
       <label>
         Ladda upp fil (logga, skiss, inspiration)
-        <input type="file" name="attachment">
+        <input type="file" id="fileInput" name="attachment">
+        <div class="file-info" id="fileInfo"></div>
       </label>
 
       <button type="submit">Skicka</button>
@@ -156,12 +199,19 @@
   <script>
     const nameInput = document.getElementById("nameInput");
     const nameCheck = document.getElementById("nameCheck");
+    const fileInput = document.getElementById("fileInput");
+    const fileInfo = document.getElementById("fileInfo");
 
     nameInput.addEventListener("input", () => {
-      if (nameInput.value.trim().length > 1) {
-        nameCheck.style.display = "block";
+      nameCheck.style.display = nameInput.value.trim().length > 1 ? "block" : "none";
+    });
+
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files.length > 0) {
+        fileInfo.textContent = "Vald fil: " + fileInput.files[0].name;
+        fileInfo.style.display = "block";
       } else {
-        nameCheck.style.display = "none";
+        fileInfo.style.display = "none";
       }
     });
   </script>
