@@ -62,7 +62,7 @@
       letter-spacing: 1px;
     }
 
-    /* INPUTS – TYDLIGA RUTOR */
+    /* INPUTFÄLT */
     label {
       display: block;
       font-size: 14px;
@@ -131,6 +131,16 @@
       outline-offset: 2px;
     }
 
+    /* FELMEDDELANDE */
+    #typeError {
+      display: none;
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+    }
+
     /* NAMN + BOCK */
     .name-wrap {
       position: relative;
@@ -177,7 +187,7 @@
   <div class="container">
 
     <div class="logo">
-     <img src="assets/854c2d69350134772c9b2a774a80a23a1136755fa0820665a74c0bc1c0fd107d.png" alt="STRND Business">
+      <img src="assets/854c2d69350134772c9b2a774a80a23a1136755fa0820665a74c0bc1c0fd107d.png" alt="STRND Business">
     </div>
 
     <h1 class="title">STRND BUSINESS</h1>
@@ -189,7 +199,7 @@
 
     <h2>Skicka förfrågan</h2>
 
-    <form
+    <form id="requestForm"
       action="https://formsubmit.co/lindstrand_s@outlook.com"
       method="POST"
     >
@@ -199,8 +209,9 @@
 
       <div class="customer-type">
         <label>TYP AV KUND</label>
+
         <div class="customer-options">
-          <input type="radio" id="privat" name="kundtyp" value="Privatperson" required>
+          <input type="radio" id="privat" name="kundtyp" value="Privatperson">
           <label for="privat">PRIVATPERSON</label>
 
           <input type="radio" id="foretag" name="kundtyp" value="Företag">
@@ -215,6 +226,8 @@
           <input type="radio" id="creator" name="kundtyp" value="Creator">
           <label for="creator">CREATOR</label>
         </div>
+
+        <p id="typeError">Välj vilken kategori du tillhör</p>
       </div>
 
       <label class="name-wrap">
@@ -248,12 +261,27 @@
   </div>
 
   <script>
+    const form = document.getElementById("requestForm");
+    const typeError = document.getElementById("typeError");
+    const radios = document.querySelectorAll('input[name="kundtyp"]');
+
     const nameInput = document.getElementById("nameInput");
     const nameCheck = document.getElementById("nameCheck");
 
     nameInput.addEventListener("input", () => {
       nameCheck.style.display =
         nameInput.value.trim().length > 1 ? "block" : "none";
+    });
+
+    form.addEventListener("submit", (e) => {
+      let selected = false;
+      radios.forEach(r => { if (r.checked) selected = true; });
+
+      if (!selected) {
+        e.preventDefault();
+        typeError.style.display = "block";
+        typeError.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
     });
   </script>
 
