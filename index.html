@@ -22,7 +22,19 @@
       padding: 40px;
     }
 
-    h1, h2, p {
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+    }
+
+    h2, p {
       text-align: center;
     }
 
@@ -85,7 +97,11 @@
 
   <div class="container">
 
-    <h1>STRND Business</h1>
+    <!-- LOGGA -->
+    <div class="logo">
+      <img src="assets/logga.png" alt="STRND Business">
+    </div>
+
     <p>För företag, butiker och privatpersoner.</p>
 
     <h2>Skicka förfrågan</h2>
@@ -96,7 +112,7 @@
       enctype="multipart/form-data"
     >
 
-      <!-- FormSubmit inställningar -->
+      <!-- FormSubmit-inställningar -->
       <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
       <input type="hidden" name="_captcha" value="false">
 
