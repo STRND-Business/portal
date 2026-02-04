@@ -2,12 +2,10 @@
 <html lang="sv">
 <head>
   <meta charset="UTF-8">
-  <title>Skickat – STRND Business</title>
+  <title>STRND Business</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -21,69 +19,140 @@
     }
 
     .container {
-      text-align: center;
-      max-width: 520px;
-      padding: 40px 30px;
+      width: 100%;
+      max-width: 560px;
+      padding: 48px 32px;
     }
 
     /* LOGGA */
-    .logo img {
-      max-width: 220px;
-      width: 100%;
-      margin-bottom: 35px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+    .logo {
+      text-align: center;
+      margin-bottom: 32px;
     }
 
-    h1 {
-      font-size: 32px;
+    .logo img {
+      max-width: 260px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* TITLAR */
+    .title {
+      text-align: center;
+      font-size: 34px;
       letter-spacing: 2px;
       margin-bottom: 12px;
+      font-weight: 700;
     }
 
-    /* SUCCESS-IKON – CSS ONLY */
-    .success-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 28px auto;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      position: relative;
-    }
-
-    .success-icon::after {
-      content: "";
-      position: absolute;
-      left: 18px;
-      top: 30px;
-      width: 14px;
-      height: 28px;
-      border-right: 4px solid #fff;
-      border-bottom: 4px solid #fff;
-      transform: rotate(45deg);
-    }
-
-    p {
-      color: #cfcfcf;
-      line-height: 1.6;
-      margin-bottom: 40px;
+    .intro {
+      text-align: center;
       font-size: 15px;
+      max-width: 440px;
+      margin: 0 auto 48px auto;
+      line-height: 1.7;
+      color: #cfcfcf;
     }
 
-    a {
-      display: inline-block;
-      padding: 16px 28px;
+    h2 {
+      text-align: center;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+    }
+
+    /* INPUTFÄLT */
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 15px;
+      background: rgba(255,255,255,0.09);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.55);
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      background: rgba(255,255,255,0.14);
+      border-color: #fff;
+    }
+
+    /* ===== TYP AV KUND ===== */
+    .customer-type {
+      margin-bottom: 40px;
+    }
+
+    .customer-type > label {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .customer-options {
+      display: grid;
+      gap: 16px;
+    }
+
+    .customer-options input {
+      display: none;
+    }
+
+    .customer-options label {
+      padding: 24px;
       background: #000;
       color: #fff;
-      text-decoration: none;
-      font-weight: 700;
-      letter-spacing: 2px;
+      border: 2px solid #000;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      cursor: pointer;
     }
 
-    a:hover {
-      opacity: 0.85;
+    .customer-options input:checked + label {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
     }
+
+    /* FEL */
+    .customer-type.error .customer-options label {
+      outline: 3px solid #fff;
+      outline-offset: 2px;
+    }
+
+    #typeError {
+      display: none;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+
+    /* KNAPP */
+    button {
+      width: 100%;
+      padding: 20px;
+      margin-top: 32px;
+      background: #000;
+      color: #fff;
+      border: none;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+
+    button:hover { opacity: 0.85; }
   </style>
 </head>
 
@@ -92,22 +161,92 @@
   <div class="container">
 
     <div class="logo">
-      <img src="./assets/logga.png" alt="STRND Business">
+      <img src="assets/854c2d69350134772c9b2a774a80a23a1136755fa0820665a74c0bc1c0fd107d.png" alt="STRND Business">
     </div>
 
-    <h1>TACK</h1>
+    <h1 class="title">STRND BUSINESS</h1>
 
-    <div class="success-icon"></div>
-
-    <p>
-      Din förfrågan är skickad.<br>
-      Vi kommer att höra av oss inom 12 timmar via angiven e-post
-      eller telefonnummer så snart som möjligt.
+    <p class="intro">
+      Välkommen till portalen. Här kan privatpersoner, företag, butiker,
+      föreningar och creators skicka förfrågningar.
     </p>
 
-    <a href="index.html">TILLBAKA TILL PORTALEN</a>
+    <h2>Skicka förfrågan</h2>
+
+    <form id="requestForm"
+      action="https://formsubmit.co/lindstrand_s@outlook.com"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://strnd-business.github.io/portal/skickat.html">
+
+      <div class="customer-type" id="customerBlock">
+        <label>TYP AV KUND</label>
+
+        <div class="customer-options">
+          <input type="radio" id="privat" name="kundtyp" value="Privatperson">
+          <label for="privat">PRIVATPERSON</label>
+
+          <input type="radio" id="foretag" name="kundtyp" value="Företag">
+          <label for="foretag">FÖRETAG</label>
+
+          <input type="radio" id="butik" name="kundtyp" value="Butik">
+          <label for="butik">BUTIK</label>
+
+          <input type="radio" id="forening" name="kundtyp" value="Förening">
+          <label for="forening">FÖRENING</label>
+
+          <input type="radio" id="creator" name="kundtyp" value="Creator">
+          <label for="creator">CREATOR</label>
+        </div>
+
+        <p id="typeError">Välj vilken kategori du tillhör</p>
+      </div>
+
+      <label>
+        Namn
+        <input type="text" name="namn" required>
+      </label>
+
+      <label>
+        E-post
+        <input type="email" name="email" required>
+      </label>
+
+      <label>
+        Meddelande
+        <textarea name="meddelande" rows="4" required></textarea>
+      </label>
+
+      <button type="submit">SKICKA</button>
+    </form>
 
   </div>
+
+  <script>
+    const form = document.getElementById("requestForm");
+    const radios = document.querySelectorAll('input[name="kundtyp"]');
+    const errorText = document.getElementById("typeError");
+    const customerBlock = document.getElementById("customerBlock");
+
+    radios.forEach(r => {
+      r.addEventListener("change", () => {
+        errorText.style.display = "none";
+        customerBlock.classList.remove("error");
+      });
+    });
+
+    form.addEventListener("submit", (e) => {
+      const selected = [...radios].some(r => r.checked);
+      if (!selected) {
+        e.preventDefault();
+        errorText.style.display = "block";
+        customerBlock.classList.add("error");
+        customerBlock.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  </script>
 
 </body>
 </html>
