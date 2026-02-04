@@ -5,9 +5,7 @@
   <title>STRND Business</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -26,7 +24,7 @@
       padding: 40px 30px;
     }
 
-    /* LOGGA – RÅ BILD */
+    /* LOGGA */
     .logo {
       text-align: center;
       margin-bottom: 30px;
@@ -40,13 +38,13 @@
       margin: 0 auto;
     }
 
-    /* TITEL */
+    /* TITEL & INTRO */
     .title {
       text-align: center;
       font-size: 34px;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
       font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
     }
 
     .intro {
@@ -70,26 +68,28 @@
       margin-bottom: 18px;
     }
 
-    /* INPUTS – LJUSARE ÄN BAKGRUND */
+    /* INPUTS – Tydliga rutor */
     input,
     textarea {
       width: 100%;
       margin-top: 6px;
       padding: 14px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.1);
       color: #fff;
-      border: 1px solid rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.6);
       font-size: 15px;
       outline: none;
     }
 
+    input::placeholder { color: #ccc; }
+
     input:focus,
     textarea:focus {
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.18);
       border-color: #fff;
     }
 
-    /* ===== TYP AV KUND – STOR & FET ===== */
+    /* TYP AV KUND */
     .customer-type {
       margin-bottom: 40px;
     }
@@ -112,15 +112,15 @@
     }
 
     .customer-options label {
-      padding: 24px;
+      padding: 22px;
       background: #000;
       color: #fff;
       border: 2px solid #000;
-      cursor: pointer;
       text-align: center;
       font-size: 18px;
       font-weight: 800;
       letter-spacing: 1.5px;
+      cursor: pointer;
       transition: 0.2s ease;
     }
 
@@ -142,20 +142,11 @@
       position: absolute;
       right: 14px;
       top: 46px;
-      color: #fff;
-      display: none;
       font-size: 18px;
+      display: none;
     }
 
-    /* INFO */
-    .file-note {
-      margin-top: 25px;
-      font-size: 14px;
-      font-weight: 700;
-      text-align: center;
-      line-height: 1.6;
-    }
-
+    /* KNAPP */
     button {
       width: 100%;
       padding: 20px;
@@ -169,8 +160,15 @@
       cursor: pointer;
     }
 
-    button:hover {
-      opacity: 0.85;
+    button:hover { opacity: 0.85; }
+
+    /* INFO */
+    .file-note {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.6;
     }
   </style>
 </head>
