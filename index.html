@@ -36,6 +36,9 @@
       max-width: 260px;
       width: 100%;
       height: auto;
+      display: block;
+      margin: 0 auto;
+      background: none;
     }
 
     /* TITEL + INTRO */
@@ -67,13 +70,13 @@
       margin-bottom: 18px;
     }
 
-    /* === INPUTFÄLT – TYDLIGA MEN EJ SVARTA === */
+    /* INPUTS */
     input,
     textarea {
       width: 100%;
       margin-top: 6px;
       padding: 14px;
-      background: rgba(255,255,255,0.07);   /* bryter mot bakgrunden */
+      background: rgba(255,255,255,0.07);
       color: #fff;
       border: 1px solid rgba(255,255,255,0.45);
       font-size: 15px;
@@ -90,7 +93,7 @@
       border-color: #fff;
     }
 
-    /* === KUND TYP – SVARTA VAL === */
+    /* KUNDVAL */
     .customer-type {
       margin-bottom: 35px;
     }
@@ -127,7 +130,7 @@
       outline-offset: 2px;
     }
 
-    /* === NAMN + BOCK === */
+    /* NAMN + BOCK */
     .name-wrap {
       position: relative;
     }
@@ -141,12 +144,14 @@
       font-size: 18px;
     }
 
-    /* === FIL === */
-    .file-info {
-      font-size: 13px;
+    /* INFO-TEXT */
+    .file-note {
+      margin-top: 25px;
+      font-size: 14px;
+      font-weight: 700;
       color: #fff;
-      margin-top: 6px;
-      display: none;
+      line-height: 1.6;
+      text-align: center;
     }
 
     button {
@@ -189,7 +194,6 @@
     <form
       action="https://formsubmit.co/lindstrand_s@outlook.com"
       method="POST"
-      enctype="multipart/form-data"
     >
       <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
       <input type="hidden" name="_captcha" value="false">
@@ -236,35 +240,23 @@
         <textarea name="meddelande" rows="4" required></textarea>
       </label>
 
-      <label>
-        Ladda upp fil (logga, skiss, inspiration)
-        <input type="file" id="fileInput" name="attachment">
-        <div class="file-info" id="fileInfo"></div>
-      </label>
-
       <button type="submit">SKICKA</button>
     </form>
+
+    <div class="file-note">
+      Eventuella filer, logotyper eller skisser bifogas istället via mejl
+      när vi kontaktar dig.
+    </div>
 
   </div>
 
   <script>
     const nameInput = document.getElementById("nameInput");
     const nameCheck = document.getElementById("nameCheck");
-    const fileInput = document.getElementById("fileInput");
-    const fileInfo = document.getElementById("fileInfo");
 
     nameInput.addEventListener("input", () => {
       nameCheck.style.display =
         nameInput.value.trim().length > 1 ? "block" : "none";
-    });
-
-    fileInput.addEventListener("change", () => {
-      if (fileInput.files.length > 0) {
-        fileInfo.textContent = "Vald fil: " + fileInput.files[0].name;
-        fileInfo.style.display = "block";
-      } else {
-        fileInfo.style.display = "none";
-      }
     });
   </script>
 
