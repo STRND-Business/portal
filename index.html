@@ -3,58 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <title>STRND Business</title>
+
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      padding: 40px;
+    }
+
+    h1, h2, p {
+      text-align: center;
+    }
+
+    p {
+      color: #bbb;
+      margin-bottom: 40px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #333;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #fff;
+    }
+
+    .name-wrapper {
+      position: relative;
+    }
+
+    .checkmark {
+      position: absolute;
+      right: 12px;
+      top: 42px;
+      color: #00ff88;
+      display: none;
+      font-size: 18px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      background: #000;
+      color: #fff;
+      border: 1px solid #fff;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #111;
+    }
+  </style>
 </head>
 
-<body style="background:#000;color:#fff;padding:40px;font-family:Arial,sans-serif">
+<body>
 
-  <h1>STRND Business</h1>
-  <p>För företag, butiker och privatpersoner.</p>
+  <div class="container">
 
-  <hr style="margin:40px 0;border:1px solid #222;">
+    <h1>STRND Business</h1>
+    <p>För företag, butiker och privatpersoner.</p>
 
-  <h2>Skicka förfrågan</h2>
+    <h2>Skicka förfrågan</h2>
 
-  <form
-    action="https://formsubmit.co/lindstrand_s@outlook.com"
-    method="POST"
-    style="max-width:500px;"
-  >
+    <form
+      action="https://formsubmit.co/lindstrand_s@outlook.com"
+      method="POST"
+      enctype="multipart/form-data"
+    >
 
-    <!-- FormSubmit-inställningar -->
-    <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_next" value="https://strnd-business.github.io/portal/">
+      <!-- FormSubmit inställningar -->
+      <input type="hidden" name="_subject" value="Ny förfrågan – STRND Business">
+      <input type="hidden" name="_captcha" value="false">
 
-    <label>
-      Typ av kund<br>
-      <select name="kundtyp" required style="width:100%;padding:10px;margin-bottom:20px;">
-        <option value="">Välj</option>
-        <option value="Företag">Företag</option>
-        <option value="Butik">Butik</option>
-        <option value="Privatperson">Privatperson</option>
-      </select>
-    </label>
+      <label>
+        Typ av kund
+        <select name="kundtyp" required>
+          <option value="">Välj</option>
+          <option value="Företag">Företag</option>
+          <option value="Butik">Butik</option>
+          <option value="Privatperson">Privatperson</option>
+        </select>
+      </label>
 
-    <label>
-      Namn<br>
-      <input type="text" name="namn" required style="width:100%;padding:10px;margin-bottom:20px;">
-    </label>
+      <label class="name-wrapper">
+        Namn
+        <input type="text" id="nameInput" name="namn" required>
+        <span class="checkmark" id="nameCheck">✔</span>
+      </label>
 
-    <label>
-      E-post<br>
-      <input type="email" name="email" required style="width:100%;padding:10px;margin-bottom:20px;">
-    </label>
+      <label>
+        E-post
+        <input type="email" name="email" required>
+      </label>
 
-    <label>
-      Meddelande<br>
-      <textarea name="meddelande" rows="4" required style="width:100%;padding:10px;margin-bottom:20px;"></textarea>
-    </label>
+      <label>
+        Meddelande
+        <textarea name="meddelande" rows="4" required></textarea>
+      </label>
 
-    <button type="submit" style="padding:12px 20px;background:#000;color:#fff;border:1px solid #fff;">
-      Skicka
-    </button>
+      <label>
+        Ladda upp fil (logga, skiss, inspiration)
+        <input type="file" name="attachment">
+      </label>
 
-  </form>
+      <button type="submit">Skicka</button>
+
+    </form>
+
+  </div>
+
+  <script>
+    const nameInput = document.getElementById("nameInput");
+    const nameCheck = document.getElementById("nameCheck");
+
+    nameInput.addEventListener("input", () => {
+      if (nameInput.value.trim().length > 1) {
+        nameCheck.style.display = "block";
+      } else {
+        nameCheck.style.display = "none";
+      }
+    });
+  </script>
 
 </body>
 </html>
